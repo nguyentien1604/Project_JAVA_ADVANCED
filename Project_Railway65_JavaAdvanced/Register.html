@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Register System</h2>
+        <form action="" method="POST">
+          <div class="form-group">
+            <label for="Usenname">Username:</label>
+            <input type="text" class="form-control" id="Usenname" placeholder="Enter Usenname" name="username">
+          </div>
+          <div class="form-group">
+            <label for="text">Fullname:</label>
+            <input type="text" class="form-control" id="Fullname" placeholder="Enter Fullname" name="fullname">
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+          </div>   
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="password_id" placeholder="Enter password" name="pwd">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Confimation Password:</label>
+            <input type="password" required="true" class="form-control" id="re_password_id" placeholder="Enter password" name="pwd">
+          </div>
+          <div class="form-group">
+            <label for="Phone">Phone:</label>
+            <input type="tel" class="form-control" id="Phone" placeholder="Enter Phone" name="Phone">
+          </div> 
+          <div class="form-group">
+            <label for="Address">Address:</label>
+            <input type="text" class="form-control" id="Address" placeholder="Enter Address" name="Address">
+          </div> 
+          <div class="form-group">
+            <label for="City">City:</label>
+            <input type="text" class="form-control" id="City" placeholder="Enter City" name="City">
+          </div> 
+          <div class="form-group">
+            <label for="Country">Country:</label>
+            <input type="text" class="form-control" id="Country" placeholder="Enter City" name="City">
+          </div> 
+          
+
+          <!-- <div class="checkbox">
+            <label><input type="checkbox" name="remember"> Remember me</label>
+          </div> -->
+          
+          <button type="button" class="btn btn-success" onclick="handleCreateNewProduct()">Register</button>
+          
+        </form>
+      </div>
+      <script src="./index.js"></script>
+      
+</body>
+</html>

@@ -1,0 +1,293 @@
+<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+  <br />
+  <br />
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <input type="search" name="" onkeyup="myFunction(event)" id="inputSearch" class="form-control" value="" required="required" title="" />
+          </div>
+
+          <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <!-- <button type="button" class="btn btn-success" onclick="handleSearch()">Search</button> -->
+            <form th:action="@{/}">
+              Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+              &nbsp;
+              <input type="submit" value="Search" />
+              &nbsp;
+              <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+          </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Table Result -->
+  
+  
+  <!-- selectSize -->
+  
+  <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+    <div class="row">
+   
+      <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <h4>Size</h4>
+      </div>
+      
+      <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+        <select name="" id="input" style="width:100px" onchange="changesize(this)">
+                    <option value="6">6</option>
+                    <option value="12">12</option>
+                    <option value="24">24</option>
+                    <option value="48">48</option>
+                    <option value="100">100</option>
+        </select>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <button type="button" data-toggle="modal" href='#modal-id' class="btn btn-info">Add New</button>
+          <!-- End Add New -->
+
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>ID 
+                  <i class="fa fa-fw fa-sort" onclick="handleSort('productid')"></i>
+                </th>
+                <th>Name 
+                  <i class="fa fa-fw fa-sort" onclick="handleSort('productname')"></i>
+                </th>
+                <th>Category 
+                  <i class="fa fa-fw fa-sort" onclick="handleSort('category')"></i>
+                </th>
+                <th>Supplier
+                   <i class="fa fa-fw fa-sort" onclick="handleSort('supplier')"></i>
+                  </th>
+                <th>Unitquantiy 
+                  <i class="fa fa-fw fa-sort" onclick="handleSort('quantity')"></i>
+                </th>
+                <th>Price 
+                  <i class="fa fa-fw fa-sort" onclick="handleSort('unitPrice')"></i>
+                </th>
+                <th>Description
+                   <i class="fa fa-fw fa-sort" onclick="handleSort('description')"></i>
+                  </th>
+                <th>Rating 
+                  <i class="fa fa-fw fa-sort" onclick="handleSort('rating')"></i>
+                </th>
+                <th>Picture 
+                  <i class="fa fa-fw fa-sort" onclick="handleSort('picture')"></i>
+                </th>
+                <th>Type
+                   <i class="fa fa-fw fa-sort" onclick="handleSort('type')"></i>
+                  </th>
+              </tr>
+            </thead>
+            <tbody id="tbProduct">
+
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+
+            <ul class="pagination" id="pagination_Id">
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- Modal -->
+
+  <!-- <a class="btn btn-primary" data-toggle="modal" href='#modal-id'>Trigger modal</a> -->
+  <div class="modal fade" id="modal-id">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Create New Product</h4>
+        </div>
+        <div class="modal-body">
+
+
+          <form>
+            <div class="form-group">
+              <label for="">ID</label>
+              <input type="text" class="form-control" id="Id" placeholder="Input Id">
+            </div>
+
+            <div class="form-group">
+              <label for="">Name</label>
+              <input type="text" class="form-control" id="Name" placeholder="Input Name">
+            </div>
+
+            <div class="form-group">
+              <label for="Category">Category</label>
+             <select class="form-control" id="Category">
+              <option>--Select a Category--</option>
+             </select>
+              
+            </div>
+
+            <div class="form-group">
+              <label for="Supplier_Id">Supplier</label>
+              <select class="form-control" id="Supplier_Id">
+                <option>--Select a Supplier--</option>
+              </select>
+              
+            </div>
+           
+            <div class="form-group">
+              <label for="Unitquantity">Unitquantity</label>
+              <input type="text" class="form-control" id="Unitquantity" placeholder="Input unitQuantity">
+            </div>
+
+            <div class="form-group">
+              <label for="">UnitPrice</label>
+              <input type="text" class="form-control" id="UnitPrice" placeholder="Input unitPrice">
+            </div>
+
+            <div class="form-group">
+              <label for="">Description</label>
+              <input type="text" class="form-control" id="Description" placeholder="Input Description">
+            </div>
+
+            <div class="form-group">
+              <label for="">Rating</label>
+              <input type="text" class="form-control" id="Rating" placeholder="Input Rating">
+            </div>
+
+            <div class="form-group">
+              <label for="">Picture</label>
+              <input type="file" class="form-control" id="Picture" placeholder="Input Picture">
+            </div>
+
+            <div class="form-group">
+              <label for="">Type</label>
+              <input type="text" class="form-control" id="Type" placeholder="Input Type">
+            </div>
+
+
+            <button type="reset" class="btn btn-warning">Reset</button>
+            <button type="button" class="btn btn-success" onclick="handleCreateNewProduct()">Save</button>
+          </form>
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- edit &update -->
+
+  
+  <div class="modal fade" id="modal-idUpdate">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Update Product</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="">ID</label>
+              <input type="text" class="form-control" id="IdUpdate" placeholder="Input Id" disabled>
+            </div>
+
+            <div class="form-group">
+              <label for="">Name</label>
+              <input type="text" class="form-control" id="NameUpdate" placeholder="Input Name">
+            </div>
+
+            <div class="form-group">
+              <label for="CategoryUpDate">Category</label>
+              <select class="form-control" id="CategoryUpDate">
+                <option>--Select a Category--</option>
+              </select>
+
+
+            <div class="form-group">
+              <label for="SupplierUpDate">Supplier</label>
+              <select class="form-control" id="SupplierUpDate">
+                <option>--Select a Supplier--</option>
+              </select>
+            
+              <div class="form-group">
+                <label for="quantityUpDate">Uniquantity</label>
+                <input type="text" class="form-control" id="quantityUpDate" placeholder="Input unitQuantity">
+              </div>
+
+            <div class="form-group">
+              <label for="">UnitPrice</label>
+              <input type="text" class="form-control" id="UnitPriceUpdate" placeholder="Input unitPrice">
+            </div>
+
+            <div class="form-group">
+              <label for="">Description</label>
+              <input type="text" class="form-control" id="DescriptionUpDate" placeholder="Input Description">
+            </div>
+
+            <div class="form-group">
+              <label for="">Rating</label>
+              <input type="text" class="form-control" id="RatingUpdate" placeholder="Input Rating">
+            </div>
+
+            <div class="form-group">
+              <label for="">Picture</label>
+              <input type="file" class="form-control" id="PictureUpdate" placeholder="Input Picture">
+            </div>
+
+            <div class="form-group">
+              <label for="">Type</label>
+              <input type="text" class="form-control" id="TypeUpdate" placeholder="Input Type">
+            </div>
+
+
+            <button type="reset" class="btn btn-warning">Reset</button>
+            <button type="button" class="btn btn-success" onclick="handleUpdateProduct()">Update</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<!-- End Search -->
